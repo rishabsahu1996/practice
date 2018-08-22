@@ -1,0 +1,221 @@
+<html>
+<head>
+	<title>Modified google form</title>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="innerwrapper">
+			<div class="header">
+				<img src="googlephoto.png">
+				<h2>Create your google account</h2>
+			</div>
+			<div class="form">
+				<div class="left-form">
+					<div class="form-group">
+						<input type="text" name="FirstName" id="firstname" placeholder="FirstName">
+						<span id="rfirstname"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" name="LastName" id ="lastname" placeholder="LastName">
+						<span id="rlastname"></span>
+					</div>
+					<div class="form-user">
+						<input type="text" name="Username" id="username"placeholder="Username" />
+						<span>gmail.com</span>
+						<span id="rusername"></span>
+					</div>
+
+					<div class="form-group">
+						<input type="text" name="Password" id="password" placeholder="Password" />
+						<span id="rpassword"></span>
+					</div>
+					<div class="form-group">
+						<input type="text" name="ConfirmPassword" id="confirmpassword" placeholder="ConfirmPassword">
+						<span id="rconfirmpassword"></span>
+					</div>
+					<div class="sub">
+						<p>Use 8 or more characters with a mix of letters, numbers & symbols.</p>
+					</div>
+					<div class="button-group" style="float:left;">
+						<p><a href="javascript:void(0)">Sign in Instead</a></p>
+					</div>
+					<div class="nextanchor" style="float: right;">
+						<p><a href="#" onclick=" return validate()">Next</a></p>
+					</div>
+					<div class="nextanchor" style="float: right;">
+						<p><a href="javascript:void(0)" onclick=" return add()">ADD</a></p>
+					</div>
+					<div id="show">
+						
+					</div>
+				</div>
+				<div class="right-form">
+					<img src="gmail.svg" >
+					<h3 align="center">One account, All of Google working for you.</h3>
+				</div>
+			</div> 
+		</div>
+	</div>
+	<script type="text/javascript">
+		
+
+		function validate(){
+				var f =true;
+				var first=document.getElementById("firstname").value;
+
+				if(first.length<=0){
+				document.getElementById("rfirstname").innerHTML="enter the first name";
+				f= false;
+			}
+			var second=document.getElementById("lastname").value;
+			if (second.length<=0) {
+				document.getElementById("rlastname").innerHTML='enter the last name';
+				f=false;
+			}
+			var pass=document.getElementById("password").value;
+			if (pass.length<8) {
+				document.getElementById("rpassword").innerHTML="enter password";
+				f=false;
+			}var conpass=document.getElementById("confirmpassword").value;
+			if (conpass!=pass) {
+				document.getElementById("rconfirmpassword").innerHTML="password not match";
+				f=false;
+			}
+			var uname=document.getElementById("username").value;
+			if (uname.length<=0) {
+				document.getElementById("rusername").innerHTML="enter mail id";
+				f=false;
+			}
+			return f;
+		}
+         var i=0;
+		function add(){
+			var div=document.getElementById("show");
+			var creatediv= document.createElement("div");
+			var input= document.createElement("input");
+			input.setAttribute("placeholder","enter your input");
+			input.setAttribute("type","text");
+			creatediv.setAttribute("id","id_"+ ++i);
+			var anchor= document.createElement("a");
+			anchor.setAttribute("href","javascript:void(0)");
+			anchor.setAttribute("onclick","remove('show','id_"+i+"')");
+			var content= document.createTextNode("remove");
+			anchor.appendChild(content);
+            
+			creatediv.appendChild(input);
+			creatediv.appendChild(anchor);
+			div.appendChild(creatediv);
+
+
+
+
+		}
+		function remove(p_id,c_id){
+			var parent = document.getElementById(p_id);
+			var child= document.getElementById(c_id);
+			parent.removeChild(child);
+
+		}
+
+	</script>
+</body>
+</html>
+<style type="text/css">
+*,ul,ol,li{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font-size: 14px;
+	color: black;
+	font-family: sans-serif;
+}
+#wrapper{}
+	.innerwrapper{
+		background-color:white;
+		width:750px;
+		height: 100%;
+		margin: 20px auto;
+		padding: 30px 20px; 
+		border-style: outset;
+	}
+	.header{
+		background-color: white;
+		width: 740px;
+		
+		margin: 0px;
+		padding: 0px;
+
+	}
+	.form{
+		background-color: white;
+		width:100%;
+		height:100%;
+		overflow: hidden;
+	}
+	.left-form{
+		background-color: white;
+		width: 60%;
+		height:100%;
+		float: left;
+	}
+	.right-form{
+		background-color: white;
+		width:40%; 
+		height:100%;
+		float: right;
+		margin: auto;
+	}
+
+	.form-group {
+		width: 46%;
+		float: left;
+		margin: 20px 2%;
+	}
+
+	.form-group input{
+		width: 96%;
+		height: 44px;
+		border:none;
+		border-bottom: 1px solid #eaeaea;
+		
+	}
+	.form-group span{
+		color: red;
+
+	}
+	#rusername{
+		color: red;
+	}
+.form-user span{font-size: 15px;}
+	.form-user {
+		width: 93%;
+		float: left;
+		margin: 20px 2%;
+	}
+
+	.form-user input{
+		width: 80%;
+		height: 44px;
+		border: none;
+		border-bottom: 1px solid #eaeaea;
+		
+	}
+	.sub {
+		width: 96%;
+		float: left;
+		margin: 5px 2%;
+	}
+	.nextanchor{
+		float: right;
+		display: inline-block;
+		background: skyblue;
+		color: white;
+		height: 35px;
+		line-height: 35px;
+		padding: 0 26px;
+		border-radius: 5px;
+		text-decoration: none;
+	}
+
+</style>
